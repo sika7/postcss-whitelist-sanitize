@@ -1,22 +1,48 @@
+const cssValues = require("css-values").default;
+
 /**
  * @type {import('postcss').PluginCreator}
  */
-module.exports = (opts = {}) => {
+module.exports = (
+  opts = {
+    allowPropertys: [],
+    validation: true,
+    allowProperty: true,
+  }
+) => {
   // Work with options here
 
   return {
-    postcssPlugin: 'postcss-whitelist-sanitize',
+    postcssPlugin: "postcss-whitelist-sanitize",
     /*
     Root (root, postcss) {
       // Transform CSS AST here
     }
     */
 
-    /*
-    Declaration (decl, postcss) {
-      // The faster way to find Declaration node
-    }
-    */
+    Declaration(decl, postcss) {
+      // get config.
+      const {
+        allowPropertys = [],
+        validation = true,
+        allowProperty = true,
+      } = opts;
+
+      // remove not allow property.
+      if (allowProperty) {
+        if (!allowPropertys.includes(decl.prop)) {
+          decl.remove();
+        }
+      }
+
+      // remove validation error property and value.
+      if (validation) {
+        const isValidationOk = cssValues(decl.prop, decl.value);
+        if (isValidationOk !== true) {
+          decl.remove();
+        }
+      }
+    },
 
     /*
     Declaration: {
@@ -25,7 +51,7 @@ module.exports = (opts = {}) => {
       }
     }
     */
-  }
-}
+  };
+};
 
-module.exports.postcss = true
+module.exports.postcss = true;
