@@ -20,7 +20,7 @@ module.exports = (
     }
     */
 
-    Declaration(decl, postcss) {
+    Declaration(decl) {
       // get config.
       const {
         allowPropertys = [],

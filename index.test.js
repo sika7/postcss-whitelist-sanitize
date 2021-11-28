@@ -64,13 +64,24 @@ it("remove unknown value", async () => {
 });
 
 it("validation check false", async () => {
-  const testOpts2 = { ...testOpts, validationCheck: false };
-  await run("background-color: hoge;color: #eee;", "background-color: hoge;color: #eee;", testOpts2);
+  const testOpts2 = {
+    allowPropertys: ["background-color", "color"],
+    validationCheck: false,
+  };
+  await run(
+    "background-color: hoge;color: #eee;",
+    "background-color: hoge;color: #eee;",
+    testOpts2
+  );
 });
 
 it("allowProperty check false", async () => {
   const testOpts2 = { allowPropertys: [], allowPropertyCheck: false };
-  await run("background-color: hoge;color: #eee;position: fixed;", "color: #eee;position: fixed;", testOpts2);
+  await run(
+    "background-color: hoge;color: #eee;position: fixed;",
+    "color: #eee;position: fixed;",
+    testOpts2
+  );
 });
 
 /* Write tests here
