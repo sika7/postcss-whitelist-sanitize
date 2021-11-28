@@ -6,13 +6,16 @@
 
 ```css
 .foo {
-  /* Input example */
+  a: #eee; // <= remove unknown property.
+  background-color: hoge; // <= remove unknown value.
+  position: fixed; // <= remove not allowed property.
+  color: #eee;
 }
 ```
 
 ```css
 .foo {
-  /* Output example */
+  color: #eee;
 }
 ```
 
@@ -21,25 +24,35 @@
 **Step 1:** Install plugin:
 
 ```sh
-npm install --save-dev postcss postcss-whitelist-sanitize
+npm install --save postcss postcss-whitelist-sanitize
 ```
 
-**Step 2:** Check you project for existed PostCSS config: `postcss.config.js`
-in the project root, `"postcss"` section in `package.json`
-or `postcss` in bundle config.
+**Step 2:** allow property config.
 
-If you do not use PostCSS, add it according to [official docs]
-and set this plugin in settings.
+```js
+const opts = {
+  allowPropertys: ["background-color", "color"], // required
+  validationCheck: true,
+  allowPropertyCheck: true,
+}
+postcss([postcssWhitelistSanitize(opts)]).process()
+```
 
-**Step 3:** Add the plugin to plugins list:
+## config
 
-```diff
-module.exports = {
-  plugins: [
-+   require('postcss-whitelist-sanitize'),
-    require('autoprefixer')
-  ]
+default config.
+```js
+{
+  allowPropertys: [], // all not allow propertys.
+  validationCheck: true, // default true.
+  allowPropertyCheck: true, // default true.
 }
 ```
+
+| setting            | description                                                                                                       | default | example                | 
+| ------------------ | ----------------------------------------------------------------------------------------------------------------- | ------- | ---------------------- | 
+| allowPropertys     | setting a allow propertys.                                                                                        | []      | ["color","text-align"] | 
+| validationCheck    | true is remove validation error property and value. General w3c style Guideline applies. Using ben-eb/css-values module. | true    |                 | 
+| allowPropertyCheck | true is remove not allow property. Using allowPropertys.                                                          | true    |                        |
 
 [official docs]: https://github.com/postcss/postcss#usage
