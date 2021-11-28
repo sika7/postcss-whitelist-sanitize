@@ -3,7 +3,7 @@ on:
   release:
     types: [published]
 jobs:
-  publish-gpr:  
+  build:  
     needs: build
     runs-on: ubuntu-latest
     permissions:
