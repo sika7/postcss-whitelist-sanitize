@@ -6,8 +6,8 @@ const cssValues = require("css-values").default;
 module.exports = (
   opts = {
     allowPropertys: [],
-    validation: true,
-    allowProperty: true,
+    validationCheck: true,
+    allowPropertyCheck: true,
   }
 ) => {
   // Work with options here
@@ -24,19 +24,19 @@ module.exports = (
       // get config.
       const {
         allowPropertys = [],
-        validation = true,
-        allowProperty = true,
+        validationCheck = true,
+        allowPropertyCheck = true,
       } = opts;
 
       // remove not allow property.
-      if (allowProperty) {
+      if (allowPropertyCheck) {
         if (!allowPropertys.includes(decl.prop)) {
           decl.remove();
         }
       }
 
       // remove validation error property and value.
-      if (validation) {
+      if (validationCheck) {
         const isValidationOk = cssValues(decl.prop, decl.value);
         if (isValidationOk !== true) {
           decl.remove();

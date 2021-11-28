@@ -12,8 +12,8 @@ async function run(input, output, opts = {}) {
 
 const testOpts = {
   allowPropertys: ["background-color", "color"],
-  validation: true,
-  allowProperty: true,
+  validationCheck: true,
+  allowPropertyCheck: true,
 };
 
 it("it works line css !!", async () => {
@@ -61,6 +61,16 @@ it("remove unknown property", async () => {
 
 it("remove unknown value", async () => {
   await run("background-color: hoge;color: #eee;", "color: #eee;", testOpts);
+});
+
+it("validation check false", async () => {
+  const testOpts2 = { ...testOpts, validationCheck: false };
+  await run("background-color: hoge;color: #eee;", "background-color: hoge;color: #eee;", testOpts2);
+});
+
+it("allowProperty check false", async () => {
+  const testOpts2 = { allowPropertys: [], allowPropertyCheck: false };
+  await run("background-color: hoge;color: #eee;position: fixed;", "color: #eee;position: fixed;", testOpts2);
 });
 
 /* Write tests here
