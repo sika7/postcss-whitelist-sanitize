@@ -1,0 +1,45 @@
+{
+  "name": "postcss-whitelist-sanitize",
+  "version": "0.0.0",
+  "description": "PostCSS plugin this postcss plugin whitelist filter. sanitize leaving the allowed properties and values.",
+  "keywords": ["postcss", "css", "postcss-plugin", "postcss-whitelist-sanitize"],
+  "scripts": {
+    "test": "jest --coverage && eslint ."
+  },
+  "author": "sika7 <91676209+sika7@users.noreply.github.com>",
+  "license": "MIT",
+  "repository": "sika7/postcss-whitelist-sanitize",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "peerDependencies": {
+    "postcss": "^8.3.0"
+  },
+  "devDependencies": {
+    "clean-publish": "^3.4.2",
+    "eslint": "^8.0.1",
+    "eslint-plugin-jest": "^25.2.2",
+    "jest": "^27.3.1",
+    "postcss": "^8.3.11"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2017
+    },
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "extends": ["eslint:recommended", "plugin:jest/recommended"],
+    "rules": {
+      "jest/expect-expect": "off"
+    }
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "statements": 100
+      }
+    }
+  }
+}
