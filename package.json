@@ -1,6 +1,6 @@
 {
   "name": "postcss-whitelist-sanitize",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "PostCSS plugin this postcss plugin whitelist filter. sanitize leaving the allowed properties and values.",
   "keywords": [
     "postcss",
