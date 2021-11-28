@@ -16,7 +16,7 @@ const testOpts = {
   allowPropertyCheck: true,
 };
 
-it("it works line css !!", async () => {
+it("line css works.", async () => {
   await run(
     "background-color: #eee;color: #eee;",
     "background-color: #eee;color: #eee;",
@@ -24,7 +24,7 @@ it("it works line css !!", async () => {
   );
 });
 
-it("it works block css !!", async () => {
+it("works block css !!", async () => {
   await run(
     `
 .test {
@@ -84,10 +84,3 @@ it("allowProperty check false", async () => {
   );
 });
 
-/* Write tests here
-
-it('does something', async () => {
-  await run('a{ }', 'a{ }', { })
-})
-
-*/
