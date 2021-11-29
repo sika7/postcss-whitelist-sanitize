@@ -14,6 +14,9 @@
   "author": "sika7 <91676209+sika7@users.noreply.github.com>",
   "license": "MIT",
   "repository": "https://github.com/sika7/postcss-whitelist-sanitize",
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=12.0.0"
   },
