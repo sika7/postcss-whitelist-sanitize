@@ -6,6 +6,8 @@ interface Config {
   allowPropertyCheck?: boolean;
 }
 
+export default function postcssWhitelistSanitize(config: Config): PluginCreator<Config>
+
 declare module "./index.js" {
   export const postcss = true;
   export default function postcssWhitelistSanitize(config: Config): PluginCreator<Config>
