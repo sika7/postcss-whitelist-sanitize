@@ -13,7 +13,7 @@
   },
   "author": "sika7 <91676209+sika7@users.noreply.github.com>",
   "license": "MIT",
-  "repository": "https://github.com/sika7/postcss-whitelist-sanitize",
+  "repository": "sika7/postcss-whitelist-sanitize",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/sika7"
   },
