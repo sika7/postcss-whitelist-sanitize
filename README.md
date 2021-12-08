@@ -29,7 +29,10 @@ npm install --save postcss postcss-whitelist-sanitize
 
 **Step 2:** allow property config.
 
-```js
+```javascript
+import postcss from "postcss";
+const postcssWhitelistSanitize = require("@sika7/postcss-whitelist-sanitize");
+
 const opts = {
   allowPropertys: ["background-color", "color"], // required
   validationCheck: true,
@@ -41,8 +44,8 @@ postcss([postcssWhitelistSanitize(opts)]).process()
 ## config
 
 default config.
-```js
-{
+```javascript
+const opts = {
   allowPropertys: [], // all not allow propertys.
   validationCheck: true, // default true.
   allowPropertyCheck: true, // default true.
